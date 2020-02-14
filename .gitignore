@@ -1,0 +1,4 @@
+.vs/*
+DynDns/bin/*
+DynDns/obj/Debug/*
+DynDns/obj/Release/*
