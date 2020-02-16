@@ -25,6 +25,7 @@ namespace DynDns
                 Dictionary<string, object> payload = new Dictionary<string, object>();
                 payload.Add("subDomain", subdomain);
                 payload.Add("target", newip);
+                payload.Add("ttl", "600");
                 try
                 {
                     await ovhclient.PutAsync($"/domain/zone/{zone}/record/{id}", payload);
