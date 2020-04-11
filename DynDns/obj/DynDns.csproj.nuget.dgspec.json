@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\dev_root\\c#\\DynDns\\DynDns\\DynDns\\DynDns.csproj": {}
+    "D:\\dev_root\\c#\\DynDns\\DynDns\\DynDns\\DynDns.csproj": {}
   },
   "projects": {
-    "E:\\dev_root\\c#\\DynDns\\DynDns\\DynDns\\DynDns.csproj": {
+    "D:\\dev_root\\c#\\DynDns\\DynDns\\DynDns\\DynDns.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\dev_root\\c#\\DynDns\\DynDns\\DynDns\\DynDns.csproj",
+        "projectUniqueName": "D:\\dev_root\\c#\\DynDns\\DynDns\\DynDns\\DynDns.csproj",
         "projectName": "DynDns",
-        "projectPath": "E:\\dev_root\\c#\\DynDns\\DynDns\\DynDns\\DynDns.csproj",
+        "projectPath": "D:\\dev_root\\c#\\DynDns\\DynDns\\DynDns\\DynDns.csproj",
         "packagesPath": "C:\\Users\\Spirit\\.nuget\\packages\\",
-        "outputPath": "E:\\dev_root\\c#\\DynDns\\DynDns\\DynDns\\obj\\",
+        "outputPath": "D:\\dev_root\\c#\\DynDns\\DynDns\\DynDns\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Spirit\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -37,12 +37,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "dependencies": {
-            "csharp-ovh": {
-              "target": "Package",
-              "version": "[4.0.4, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
@@ -58,7 +52,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,65 +1,36 @@
-﻿using Ovh.Api;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace DynDns
 {
     class Program
     {
-        static async Task Main(string[] args)
+        static void Main(string[] args)
         {
-            string ap = "BUI0VWT7UWp2mQ0g";
-            string secret = "KSXHZ4vG4eJckcXyk1eE262IundHNpDG";
-            string ck = "prJhH0hKFL31Zit5ZuDx6b7KBu2yPWqp";
-            string zone = "deltaone-community.de";
-            string id = "5062989470";
-            string subdomain = "srv";
+            string password = "!*2$Y@v7Y6E%gd6@%uKFn@w2y";
+            string username = "deltaone-community.de-dyndns";
+            string hostname = "dyndns.deltaone-community.de";
 
-            WebHelper wh = new WebHelper("https://checkip.amazonaws.com/");
-            Client ovhclient = new Client("ovh-eu", ap, secret, ck);
+            WebHelper wh = new WebHelper("https://checkip.amazonaws.com/", "https://www.ovh.com/nic/update");
             string newip = wh.getIp();
-            string currentip = getSavedIp();
-            if (currentip == null || currentip != newip) {
-                Dictionary<string, object> payload = new Dictionary<string, object>();
-                payload.Add("subDomain", subdomain);
-                payload.Add("target", newip);
-                payload.Add("ttl", "600");
+            string currentip = Dns.GetHostAddresses(hostname).ToString();
+            if (currentip != newip) {
                 try
                 {
-                    await ovhclient.PutAsync($"/domain/zone/{zone}/record/{id}", payload);
+                    if (wh.updateIP(username, password, hostname, newip))
+                    {
+                        Console.WriteLine("Update Successful");
+                    } else
+                    {
+                        Console.WriteLine("Update Failed");
+                    }
                 } catch (Exception e)
                 {
                     Console.WriteLine(e.Message);
                 }
-                writeFile(newip);
-            }
-        }
-
-        static void writeFile(string content)
-        {
-            try
-            {
-                string dir = Directory.GetCurrentDirectory();
-                string file = $"{dir}/dyndns.doc";
-                File.WriteAllText(file, content);
-            } catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-        }
-
-        static string getSavedIp()
-        {
-            string dir = Directory.GetCurrentDirectory();
-            string file = $"{dir}/dyndns.doc";
-            if (File.Exists(file))
-            {
-                return File.ReadAllText(file);
-            } else
-            {
-                return null;
             }
         }
     }
