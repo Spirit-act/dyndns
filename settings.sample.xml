@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<data>
+  <password>myPassword</password>
+  <username>dyndns_user</username>
+  <hostname>dyndns.example.com</hostname>
+  <api>https://www.ovh.com/nic/update</api>
+</data>

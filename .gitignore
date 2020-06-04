@@ -1,4 +1,4 @@
 .vs/*
 DynDns/bin/*
-DynDns/obj/Debug/*
-DynDns/obj/Release/*
+DynDns/obj/*
+DynDns/settings.xml
