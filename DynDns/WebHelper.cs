@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sentry;
+using System;
 using System.IO;
 using System.Net;
 
@@ -24,11 +25,19 @@ namespace DynDns
             HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
             req.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
 
-            using (HttpWebResponse response = (HttpWebResponse)req.GetResponse())
-            using (Stream stream = response.GetResponseStream())
-            using (StreamReader reader = new StreamReader(stream))
+            try
             {
-                return reader.ReadToEnd().Trim();
+
+                using (HttpWebResponse response = (HttpWebResponse)req.GetResponse())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    return reader.ReadToEnd().Trim();
+                }
+            } catch (Exception e)
+            {
+                SentrySdk.CaptureException(e);
+                return "127.0.0.1";
             }
         }
 
@@ -56,7 +65,7 @@ namespace DynDns
                 }
             } catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                SentrySdk.CaptureException(e);
                 return false;
             }
         }
