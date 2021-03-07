@@ -1,6 +1,6 @@
 # OVH DynDns Updater
 
-This Tools collects the public ip and writes it in the OVH dns config
+This Tool collects the public ip and writes it in the OVH dns config
 
 
 ## Requirements
