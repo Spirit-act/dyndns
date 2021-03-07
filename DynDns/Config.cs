@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Xml;
-using Sentry;
 
 namespace DynDns
 {
@@ -14,10 +13,8 @@ namespace DynDns
 
         public Config(string path)
         {
-            if (File.Exists(path))
-            {
-                try
-                {
+            if (File.Exists(path)) {
+                try {
                     XmlDocument settings = new XmlDocument();
                     settings.Load(path);
 
@@ -25,14 +22,10 @@ namespace DynDns
                     this.password = settings.GetElementsByTagName("password").Item(0).InnerText;
                     this.hostname = settings.GetElementsByTagName("hostname").Item(0).InnerText;
                     this.api = settings.GetElementsByTagName("api").Item(0).InnerText;
+                } catch (Exception e) {
+                    Console.WriteLine(e.Message);
                 }
-                catch (Exception e)
-                {
-                    SentrySdk.CaptureException(e);
-                }
-            }
-            else
-            {
+            } else {
                 Console.WriteLine("File does not exit");
             }
         }

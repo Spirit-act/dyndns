@@ -1,4 +1,4 @@
-.vs/*
+**/.vscode/*
 DynDns/bin/*
 DynDns/obj/*
 DynDns/settings.xml

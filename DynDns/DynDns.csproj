@@ -12,9 +12,4 @@
     <DebugType>none</DebugType>
     <DebugSymbols>false</DebugSymbols>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Sentry" Version="2.1.1" />
-  </ItemGroup>
-
 </Project>
